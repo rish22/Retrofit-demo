@@ -19,9 +19,9 @@ class MainActivity : AppCompatActivity() {
     var binding: ViewDataBinding?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
-        textView.movementMethod = ScrollingMovementMethod()
+        setContentView(R.layout.activity_main)
+//        binding = DataBindingUtil.setContentView(this@MainActivity, R.layout.activity_main)
+//        textView.movementMethod = ScrollingMovementMethod()
         getCountryList()
     }
 
@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<CountryList>?, response: Response<CountryList>?) {
                 Log.e("Response", response!!.body().country.toString())
-                binding!!.setVariable(0,response.body().country.toString())
+//                binding!!.setVariable(0,response.body().country.toString())
                 for (i in 0 until response.body().country.size)
                     textView.text = textView.text.toString() + "\n" + response.body().country[i].countryName
             }
